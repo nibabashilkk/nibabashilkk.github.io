@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>网易云音乐热评墙-文字到不了的地方，音乐可以！</title>
+  <link rel="stylesheet" type="text/css" href="http://www.xyjun.com/css/sweetalert.css">
+  <script type="text/javascript" src="http://www.xyjun.com/js/sweetalert-dev.js"></script>
+  <meta name="description" content="网易云热评墙:我的故事只想讲给你听! "/>
+  <meta name="keywords" content="YAN RU"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<script src="assets/js/jquery.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?93f9e0edb81f2177f445264bc836f8dd";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  $(function(){
+ 	$.getJSON("https://api.uomg.com/api/comments.163?format=json",function(json){
+  			 $.each(json,function(){ 
+			 $("#title").html(json.data.name+"("+json.data.artistsname+")");
+			 $("#mp3").attr("src", json.data.url);
+			 $("#img").attr("src", json.data.picurl);
+			 $("#img2").attr("src", json.data.avatarurl);
+			 $("#yh").html("来自网易云用户@"+json.data.nickname+"的评论：");
+			 $("#pl").html(json.data.content);
+  			 });
+ 	 });
+		var aud = document.getElementById("mp3");
+	aud.onended = function() 
+	{
+		Nextone();
+	};	
+ 		});
+	function bf(){
+			 var audio = document.getElementById('mp3'); 
+			 if(audio!==null){             
+			//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+			  if(audio.paused)                     {                 
+			  audio.play();//audio.play();// 这个就是播放  
+			  $("#bf").html("暂停");
+			  }else{
+			  audio.pause();// 这个就是暂停
+			  $("#bf").html("播放");
+		   }
+		  } 
+		 }
+  function Nextone(){
+	  $.getJSON("https://api.uomg.com/api/comments.163?format=json",function(json){
+  			 $.each(json,function(){ 
+			 $("#title").html(json.data.name+"("+json.data.artistsname+")");
+			 $("#mp3").attr("src", json.data.url);
+			 $("#img").attr("src", json.data.picurl);
+			 $("#img2").attr("src", json.data.avatarurl);
+			 $("#yh").html("来自网易云用户@"+json.data.nickname+"的评论：");
+			 $("#pl").html(json.data.content);
+  			 });
+ 	 });
+	  }
+	  function copyUrl2()
+    {
+        var Url2=document.getElementById("pl").innerText;
+        var oInput = document.createElement('input');
+        oInput.value = Url2;
+        document.body.appendChild(oInput);
+        oInput.select(); // 选择对象
+        document.execCommand("Copy");  // 执行浏览器复制命令
+        oInput.style.display='none';
+        alert("复制成功")
+    }
+  </script>
+  </head>
+  <body>
+  <div id="wrapper">
+  <header id="header">
+  <div class="logo">
+  <img src="index.html" class="logo" id="img">
+  </div>
+  <div class="content" >
+  <div class="inner">
+  <h1 id="title"></h1>
+  <p id="yh"></p>
+  <p id="pl" ></p>
+  </div>
+  </div>
+  <nav>
+  <ul>
+  <li><a href="javascript:;" onClick="bf()" id="bf">暂停</a></li>
+  <li><a href="javascript:;" onClick="Nextone()">下一首</a></li>
+  <li><a href="javascript:;" onClick="copyUrl2()">复制热评</a></li>
+  </ul>
+  </nav>
+  </header>
+  <footer id="footer">
+        <p class="copyright ">
+        <a target="_blank" href="index.html#">
+     ©2021-2022</a></p>
+      <audio src="index.html" id="mp3"  autoplay>
+  您的浏览器不支持 audio 元素。
+</audio>
+  </footer>
+  <!--底部-->
+  </div>     
+  <div id="bg"></div>    
+</body>
+</html>
