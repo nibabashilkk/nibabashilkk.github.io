@@ -1,0 +1,10 @@
+#category-bar
+ #category-bar-items.category-bar-items
+  each i in site.data.categorybar
+   if is_current(i.url)
+    #category-bar-home.category-bar-item.select
+     a(href=url_for(i.url))= i.name
+   else
+    #category-bar-home.category-bar-item
+     a(href=url_for(i.url))= i.name
+ a.category-bar-more(href="/categories/") 更多

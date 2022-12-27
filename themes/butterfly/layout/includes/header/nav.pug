@@ -1,0 +1,39 @@
+nav#nav.show
+ #nav-group
+  #blog_name
+   .back-home-button(tabindex="-1")
+    i.back-home-button-icon.fa-solid.fa-grip-vertical
+    .back-menu-list-groups
+     .back-menu-list-group
+      .back-menu-list-title 网页
+      .back-menu-list
+       a.back-menu-item(href="/",title="前往主页",target="_blank")
+        #img.back-menu-item-icon(src="https://cloud-image-host.oss-cn-beijing.aliyuncs.com/mangguo.png")
+        .back-menu-item-text 主页
+       a.back-menu-item(href="https://xiaoliu.life",title="博客",target="_blank")
+        .back-menu-item-text 博客
+   a#site-name(href="/",title="返回主页",data-pjax-state="")
+    .spanname xiaoliu
+  #page-name-mask
+   #page-name
+    a#page-name-text(href="btf.scrollToDest(0,500)") PAGE_NAME
+  #menus
+  #nav-right
+   #randomPost_button.nav-button
+    a.site-page(onclick="toRandomPost()",data-pjax-state="")
+     i.fa-solid.fa-shuffle(style="font-size:1rem")
+   #search-button.nav-button
+    a.site-page.social-icon.search
+     i.fa-solid.fa-magnifying-glass(style="font-size:1rem")
+   #nav-totop.nav-button
+    a.totopbtn
+     i.fa-solid.fa-arrow-up
+     span#percent(onclick="btf.scrollToDest(0,500)") 0
+
+
+
+
+
+
+
+
