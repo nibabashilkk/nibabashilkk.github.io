@@ -16,11 +16,6 @@ function percent() {
     btn = document.querySelector("#percent"); // 获取图标
 
   result <= 99 || (result = 99), (btn.innerHTML = result);
-
 }
 
-function get_name(){
-document.getElementById("page-name").innerText = document.title.split("| 爱加班的小刘")[0];
-}
-get_name();
-
+document.getElementById("page-name").innerText = document.title.split(" | 爱加班的小刘")[0];
